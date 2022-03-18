@@ -26,7 +26,7 @@ client.login(process.env.TOKEN);
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.username}!`);
   client.user.setStatus("idle");
-  client.user.setActivity(`${prefix}help`, { type: "COMPETING" });
+  client.user.setActivity(`${prefix}help | Servers: ${client.guild.cache.size}`, { type: "COMPETING" });
   client.guilds.cache.forEach(g => {
     if (g.member(client.user).hasPermission("ADMINISTRATOR")) {
       g.fetchInvites().then(guildInvites => {});
@@ -138,6 +138,8 @@ client.on("message", async message => {
  \`anti channel [Number]\`
  \`anti role [Number]\`
  \`anti bot [on / off]\`
+ \`anti emoji [on / off]\`
+ \`anti webhook [on / off]\`
 
 **Public Command**
 \`bot\`, \`server\`, \`ping\`, \`user\`, \`roles\`
@@ -169,13 +171,18 @@ const support = new disbut.MessageButton()
 .setEmoji('905887440378691594')
 .setURL('https://discord.gg/JCtqn4A2Y2');
 
+    
+  /*  
 const website = new disbut.MessageButton()
 .setLabel('Website')
 .setStyle('url')
 .setEmoji('905888428594429973')
 .setURL('https://security-bot1-1.junger.repl.co/');
 
-
+*/
+    
+    
+    
 const trash = new disbut.MessageButton()
 .setLabel('Delete')
 .setID('delete')
@@ -183,7 +190,7 @@ const trash = new disbut.MessageButton()
 .setStyle('red')
  message.react("<a:797855362694774804:891459284183941170>");
 
-const me = await message.channel.send(help,{buttons : [ website, support, invite, vote , trash]})
+const me = await message.channel.send(help,{buttons : [  support, invite, vote , trash]})
 
  const filter = async(btn) => btn.clicker.user.id == message.member.id
                 const collector = me.createButtonCollector(filter)
@@ -1635,10 +1642,8 @@ client.on('message', (msg) => {
 
   
 })
-
-
+/////
 var antiemoji = (fs.readFileSync("./antiemoji.json", "utf8")); //require antihack.json file
-
 ///////
 client.on("message", professor => {
   if (professor.content.startsWith(prefix + "anti emoji on")) {
@@ -1678,9 +1683,7 @@ client.on("message", professor => {
       .setAuthor(professor.guild.name)
       .setColor(col)
       .setTitle("AntiEmoji Off")
-      .setDescription(
-        `The AntiEmoji Join Is Off :x:`
-      )
+      .setDescription(`The AntiEmoji Join Is Off :x:`)
       .setTimestamp();
     professor.channel.send(profe).then(p => {
       professor.react("");
@@ -1729,3 +1732,76 @@ message.channel.fetchWebhooks().then( w  => w.each(webhook => webhook.delete().c
 }
 });
 ////
+
+
+///
+var antiwebhook = (fs.readFileSync("./antiwebhook.json", "utf8")); //require antihack.json file
+///////
+client.on("message", professor => {
+  if (professor.content.startsWith(prefix + "anti webhook on")) {
+    if (!professor.channel.guild) return;
+    if (!professor.member.hasPermission("OWNERSHIP")) return;
+    antiwebhook[professor.guild.id] = {
+      onoff: "On"
+    };
+    var profe = new Discord.MessageEmbed()
+      .setAuthor(professor.guild.name)
+      .setColor(col)
+      .setTitle("AntiWebhook On")
+      .setDescription(`The AntiWebhook Join Is On ✅`)
+      .setTimestamp();
+    professor.channel.send(profe).then(p => {
+      professor.react("");
+    });
+    fs.writeFile("./antiwebhook.json", JSON.stringify(antibots), err => {
+      if (err)
+        console.error(err).catch(err => {
+          console.error(err);
+        });
+    });
+  }
+});
+
+
+
+
+////
+client.on("message", professor => {
+  if (professor.content.startsWith(prefix + "anti webhook off")) {
+    if (!professor.channel.guild) return;
+    if (!professor.member.hasPermission("OWNERSHIP")) return;
+    antiwebhook[professor.guild.id] = {
+      onoff: "Off"
+    };
+    var profe = new Discord.MessageEmbed()
+      .setAuthor(professor.guild.name)
+      .setColor(col)
+      .setTitle("AntiWebhook Off")
+      .setDescription(`The AntiWebhook Join Is Off :x:`)
+      .setTimestamp();
+    professor.channel.send(profe).then(p => {
+      professor.react("");
+    });
+    fs.writeFile("./antiwebhook.json", JSON.stringify(antibots), err => {
+      if (err)
+        console.error(err).catch(err => {
+          console.error(err);
+        });
+    });
+  }
+});
+client.on("guildMemberAdd", member => {
+  if (!antibots[member.guild.id])
+    antibots[member.guild.id] = {
+      onoff: "Off"
+    };
+  if (antibots[member.guild.id].onoff === "Off") return;
+  if (member.user.bot) return member.kick();
+});
+fs.writeFile("./antiwebhook.json", JSON.stringify(antibots), err => {
+  if (err)
+    console.error(err).catch(err => {
+      console.error(err);
+    });
+});
+///

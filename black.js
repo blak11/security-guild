@@ -154,8 +154,14 @@ client.on("message", async message => {
 
  \`anti ban [Number]\`
  \`anti kick [Number]\`
- \`anti channel [Number]\`
- \`anti role [Number]\`
+ 
+ \`anti channelC [Number]\`
+ \`anti channelD [Number]\`
+ 
+ \`anti roleC [Number]\`
+ \`anti roleD [Number]\`
+ 
+ 
  \`anti bot [on / off]\`
  \`anti emoji [on / off]\`
  \`anti webhook [on / off]\`
@@ -180,15 +186,15 @@ client.on("message", async message => {
 const invite = new disbut.MessageButton()
 .setLabel('Invite')
 .setStyle('url')
-.setEmoji('954297751053692948')
+.setEmoji('🔗')
 .setURL('https://discord.com/oauth2/authorize?client_id=807350534901071932&permissions=8&scope=bot%20applications.commands');
 
 
 const support = new disbut.MessageButton()
 .setLabel('Support')
 .setStyle('url')
-.setEmoji('905887440378691594')
-.setURL('https://discord.gg/JCtqn4A2Y2');
+.setEmoji('🗳')
+.setURL('https://discord.gg/AR7hKUAB5w');
 
     
   /*  
@@ -211,6 +217,7 @@ const trash = new disbut.MessageButton()
 */
 const me = await message.channel.send(help,{buttons : [  support, invite, vote ]})
 
+
  const filter = async(btn) => btn.clicker.user.id == message.member.id
                 const collector = me.createButtonCollector(filter)
 
@@ -225,6 +232,7 @@ const me = await message.channel.send(help,{buttons : [  support, invite, vote ]
 
   } 
 }); 
+
 //
 //////
   
@@ -1613,7 +1621,31 @@ client.on('channelUpdate', (oldchannel, newchannel) => {
     client.antinuke.set(newchannel.guild.id, 0, "channelUpdate")
   }, 4000)
 })
+/////
 
+
+client.on('guildUpdate', (oldchannel, newchannel) => {
+  if(!newchannel.guild) return;
+  client.antinuke.math(newchannel.guild.id, "+", 1, "guildUpdate")
+  if(client.antinuke.get(newchannel.guild.id, "guildUpdate") >= 4) return;
+  channelUpdateCheck(client, 3, newchannel.guild)
+
+  setTimeout(() => {
+    client.antinuke.set(newchannel.guild.id, 0, "guildUpdate")
+  }, 4000)
+})
+/////
+client.on('roleUpdate', (oldchannel, newchannel) => {
+  if(!newchannel.guild) return;
+  client.antinuke.math(newchannel.guild.id, "+", 1, "roleUpdate")
+  if(client.antinuke.get(newchannel.guild.id, "roleUpdate") >= 4) return;
+  channelUpdateCheck(client, 3, newchannel.guild)
+
+  setTimeout(() => {
+    client.antinuke.set(newchannel.guild.id, 0, "roleUpdate")
+  }, 4000)
+})
+/////
 
 client.on('webhookUpdate', async (channel) => {
  const webhooks = await (await channel.fetchWebhooks())

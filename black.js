@@ -1637,13 +1637,14 @@ client.on('message', (msg) => {
 })
 
 
+var antiemoji = (fs.readFileSync("./antiemoji.json", "utf8")); //require antihack.json file
 
 ///////
 client.on("message", professor => {
-  if (professor.content.startsWith(prefix + "anti bot on")) {
+  if (professor.content.startsWith(prefix + "anti emoji on")) {
     if (!professor.channel.guild) return;
     if (!professor.member.hasPermission("OWNERSHIP")) return;
-    antibots[professor.guild.id] = {
+    antiemoji[professor.guild.id] = {
       onoff: "On"
     };
     var profe = new Discord.MessageEmbed()
@@ -1670,7 +1671,7 @@ client.on("message", professor => {
   if (professor.content.startsWith(prefix + "anti emoji off")) {
     if (!professor.channel.guild) return;
     if (!professor.member.hasPermission("OWNERSHIP")) return;
-    antibots[professor.guild.id] = {
+    antiemoji[professor.guild.id] = {
       onoff: "Off"
     };
     var profe = new Discord.MessageEmbed()

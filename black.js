@@ -22,7 +22,7 @@ const Discord = require("discord.js");
 const cmd = require("node-cmd");
 const prefix = "s!";
 const col = ""
-client.login("ODA3MzUwNTM0OTAxMDcxOTMy.YB2txw.vNH33ZBMQTfereYnNXozJq35OxQ");
+client.login(process.env.TOKEN);
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.username}!`);
   client.user.setStatus("idle");
@@ -823,7 +823,7 @@ client.on("message", message => {
       })
       .catch(stry => {
         message.channel.send(
-          **I can't find \`${args}\` in the ban list**`
+          `**I can't find \`${args}\` in the ban list**`
         );
       });
   }
@@ -897,23 +897,7 @@ client.on("message", message => {
 
 ////////
 
-client.on("message", async message => {
-  if (message.content.toLowerCase() === prefix + "profile") {
-    message.channel.startTyping();
-    setTimeout(() => {
-      message.channel.stopTyping();
-    }, Math.random() * (1 - 3) + 1 * 200).then(
-      message.channel.send({
-        files: [
-          {
-            name: "prfoilebycutie.png",
-            attachment: `https://api.probot.io/profile/${message.author.id}`
-          }
-        ]
-      })
-    );
-  }
-});
+
 
 /////
 

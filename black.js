@@ -160,20 +160,20 @@ const invite = new disbut.MessageButton()
 .setLabel('Invite')
 .setStyle('url')
 .setEmoji('910978598356262934')
-.setURL('https://discord.com/oauth2/authorize?client_id=859937907464732722&permissions=8&scope=bot%20applications.commands');
+.setURL(`https://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands`);
 
 
 const support = new disbut.MessageButton()
 .setLabel('Support')
 .setStyle('url')
 .setEmoji('905887440378691594')
-.setURL('https://discord.gg/JCtqn4A2Y2');
+.setURL('');
 
 const website = new disbut.MessageButton()
-.setLabel('Website')
+.setLabel('Website SOON')
 .setStyle('url')
 .setEmoji('905888428594429973')
-.setURL('https://security-bot1-1.junger.repl.co/');
+.setURL('');
 
 
 const trash = new disbut.MessageButton()
@@ -183,7 +183,8 @@ const trash = new disbut.MessageButton()
 .setStyle('red')
  message.react("<a:797855362694774804:891459284183941170>");
 
-const me = await message.channel.send(help,{buttons : [ website, support, invite, vote , trash]})
+    
+    const me = await message.channel.send(help,[ website, support, invite, vote , trash]})
 
  const filter = async(btn) => btn.clicker.user.id == message.member.id
                 const collector = me.createButtonCollector(filter)
@@ -232,9 +233,9 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "anti")) {
     if (message.author.id !== message.guild.owner.user.id){
       let embeeed = new Discord.MessageEmbed()
-      .setTitle("Protection+")
+      .setTitle("Error")
       .setDescription("**JUST FOR ONWER SHIP**")
-      .setColor("9e1c36");
+      .setColor("RED");
       return message.channel.send(embeeed);
     }
     {

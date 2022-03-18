@@ -1707,7 +1707,7 @@ fs.writeFile("./antiemoji.json", JSON.stringify(antibots), err => {
       console.error(err);
     });
 });
-//
+//////////∕//////////
 
 
 /*

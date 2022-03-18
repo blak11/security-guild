@@ -205,18 +205,19 @@ const me = await message.channel.send(help,{buttons : [ website, support, invite
 client.on('message', message => {
   if(message.content.startsWith(`s!invite`)){
     var embed = new Discord.MessageEmbed()
-    .setTitle("Click Here")
-    .setURL(`https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2080374975`)
+    .setTitle("Click Invite")
+    ///.setURL(``)
     .setTimestamp()
     .setFooter(`Requested By | ${message.author.username}`)
-    .setColor("RANDOM")
+    .setColor(col)
+    
     const inv = new disbut.MessageButton()
 .setLabel('Invite')
 .setStyle('url')
 .setEmoji('954297751053692948')
 .setURL('https://discord.com/oauth2/authorize?client_id=807350534901071932&permissions=8&scope=bot%20applications.commands');
 
-    message.channel.send(embed, {buttons : [inv])
+    message.channel.send(embed, {buttons :[inv]})
   }
 });
 

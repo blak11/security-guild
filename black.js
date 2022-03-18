@@ -1360,7 +1360,6 @@ client.on("message", message => {
 });
 var antibots = (fs.readFileSync("./antibots.json", "utf8")); //require antihack.json file
 ////////
-
 client.on("message", professor => {
   if (professor.content.startsWith(prefix + "anti bot on")) {
     if (!professor.channel.guild) return;
@@ -1385,7 +1384,7 @@ client.on("message", professor => {
     });
   }
 });
-
+/////
 client.on("message", professor => {
   if (professor.content.startsWith(prefix + "anti bot off")) {
     if (!professor.channel.guild) return;
@@ -1398,7 +1397,7 @@ client.on("message", professor => {
       .setColor(col)
       .setTitle("AntiBot Off")
       .setDescription(
-        `The AntiBots Join Is Off ✅`
+        `The AntiBots Join Is Off `
       )
       .setTimestamp();
     professor.channel.send(profe).then(p => {
@@ -1428,7 +1427,6 @@ fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
       console.error(err);
     });
 });
-
 ///////
 
 client.on("guildDelete", guild => {
@@ -1638,3 +1636,34 @@ client.on('message', (msg) => {
 
   
 })
+
+
+
+///////
+client.on("message", professor => {
+  if (professor.content.startsWith(prefix + "anti bot on")) {
+    if (!professor.channel.guild) return;
+    if (!professor.member.hasPermission("OWNERSHIP")) return;
+    antibots[professor.guild.id] = {
+      onoff: "On"
+    };
+    var profe = new Discord.MessageEmbed()
+      .setAuthor(professor.guild.name)
+      .setColor(col)
+      .setTitle("AntiBot On")
+      .setDescription(`The AntiBots Join Is On ✅`)
+      .setTimestamp();
+    professor.channel.send(profe).then(p => {
+      professor.react("");
+    });
+    fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
+      if (err)
+        console.error(err).catch(err => {
+          console.error(err);
+        });
+    });
+  }
+});
+
+
+//

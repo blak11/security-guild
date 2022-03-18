@@ -111,6 +111,13 @@ else last = `  Never Join Any Room`;
     });
   }
 });
+
+
+
+const disbut = require('discord-buttons');
+disbut(client)
+
+
 //////////
 
 client.on("message", async message => {
@@ -142,9 +149,59 @@ ban, kick, mute, unmute, bans, say, unban[userid/all]
 [invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot) [Vote](https://top.gg/bot/https://top.gg/bot/) 
 
 `);
-    message.channel.send(help);
-  }
-});
+    
+    const vote = new disbut.MessageButton()
+.setLabel('Vote')
+.setStyle('url')
+.setEmoji('✨')
+.setURL('https://top.gg/bot/859937907464732722/vote');
+
+const invite = new disbut.MessageButton()
+.setLabel('Invite')
+.setStyle('url')
+.setEmoji('910978598356262934')
+.setURL('https://discord.com/oauth2/authorize?client_id=859937907464732722&permissions=8&scope=bot%20applications.commands');
+
+
+const support = new disbut.MessageButton()
+.setLabel('Support')
+.setStyle('url')
+.setEmoji('905887440378691594')
+.setURL('https://discord.gg/JCtqn4A2Y2');
+
+const website = new disbut.MessageButton()
+.setLabel('Website')
+.setStyle('url')
+.setEmoji('905888428594429973')
+.setURL('https://security-bot1-1.junger.repl.co/');
+
+
+const trash = new disbut.MessageButton()
+.setLabel('Delete')
+.setID('delete')
+.setEmoji('903698016240828426')
+.setStyle('red')
+ message.react("<a:797855362694774804:891459284183941170>");
+
+const me = await message.channel.send(help,{buttons : [ website, support, invite, vote , trash]})
+
+ const filter = async(btn) => btn.clicker.user.id == message.member.id
+                const collector = me.createButtonCollector(filter)
+
+        collector.on("collect", async(button) => {
+                     button.reply.defer()
+                     if(button.id === "delete") {
+                       me.delete().then(()=> message.delete())
+                     }
+                })
+
+         
+
+  } 
+}); 
+//
+  
+
 
 ////////
 

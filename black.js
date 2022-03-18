@@ -1420,7 +1420,6 @@ client.on("guildMemberAdd", member => {
   if (antibots[member.guild.id].onoff === "Off") return;
   if (member.user.bot) return member.kick();
 });
-
 fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
   if (err)
     console.error(err).catch(err => {
@@ -1650,13 +1649,13 @@ client.on("message", professor => {
     var profe = new Discord.MessageEmbed()
       .setAuthor(professor.guild.name)
       .setColor(col)
-      .setTitle("AntiBot On")
-      .setDescription(`The AntiBots Join Is On ✅`)
+      .setTitle("AntiEmoji On")
+      .setDescription(`The AntiEmoji Join Is On ✅`)
       .setTimestamp();
     professor.channel.send(profe).then(p => {
       professor.react("");
     });
-    fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
+    fs.writeFile("./antiemoji.json", JSON.stringify(antibots), err => {
       if (err)
         console.error(err).catch(err => {
           console.error(err);
@@ -1666,4 +1665,45 @@ client.on("message", professor => {
 });
 
 
+////
+client.on("message", professor => {
+  if (professor.content.startsWith(prefix + "anti emoji off")) {
+    if (!professor.channel.guild) return;
+    if (!professor.member.hasPermission("OWNERSHIP")) return;
+    antibots[professor.guild.id] = {
+      onoff: "Off"
+    };
+    var profe = new Discord.MessageEmbed()
+      .setAuthor(professor.guild.name)
+      .setColor(col)
+      .setTitle("AntiEmoji Off")
+      .setDescription(
+        `The AntiEmoji Join Is Off :x:`
+      )
+      .setTimestamp();
+    professor.channel.send(profe).then(p => {
+      professor.react("");
+    });
+    fs.writeFile("./antiemoji.json", JSON.stringify(antibots), err => {
+      if (err)
+        console.error(err).catch(err => {
+          console.error(err);
+        });
+    });
+  }
+});
+client.on("guildMemberAdd", member => {
+  if (!antibots[member.guild.id])
+    antibots[member.guild.id] = {
+      onoff: "Off"
+    };
+  if (antibots[member.guild.id].onoff === "Off") return;
+  if (member.user.bot) return member.kick();
+});
+fs.writeFile("./antiemoji.json", JSON.stringify(antibots), err => {
+  if (err)
+    console.error(err).catch(err => {
+      console.error(err);
+    });
+});
 //

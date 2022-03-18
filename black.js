@@ -131,22 +131,22 @@ client.on("message", async message => {
       
   
 
-Security Command
- anti ban [Number]
- anti kick [Number]
- anti channel [Number]
- anti role [Number]
- anti bot [on / off]
+**Security Command**
 
-Public
-bot, server, ping, user, roles
+ \`anti ban [Number]\`
+ \`anti kick [Number]\`
+ \`anti channel [Number]\`
+ \`anti role [Number]\`
+ \`anti bot [on / off]\`
 
-Moderation
-ban, kick, mute, unmute, bans, say, unban[userid/all]
+**Public Command**
+\`bot\`, \`server\`, \`ping\`, \`user\`, \`roles\`
+
+**Moderation Command**
+\`ban\`, \`kick\`, \`mute\`, \`unmute\`, \`bans\`, \`say\`, \`unban[userid/all]\`
 
 
- 
-[invite](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot) [Vote](https://top.gg/bot/https://top.gg/bot/) 
+
 
 `);
     
@@ -154,26 +154,26 @@ ban, kick, mute, unmute, bans, say, unban[userid/all]
 .setLabel('Vote')
 .setStyle('url')
 .setEmoji('✨')
-.setURL('https://top.gg/bot/859937907464732722/vote');
+.setURL('https://top.gg/bot/807350534901071932/vote');
 
 const invite = new disbut.MessageButton()
 .setLabel('Invite')
 .setStyle('url')
 .setEmoji('910978598356262934')
-.setURL(`https://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands`);
+.setURL('https://discord.com/oauth2/authorize?client_id=807350534901071932&permissions=8&scope=bot%20applications.commands');
 
 
 const support = new disbut.MessageButton()
 .setLabel('Support')
 .setStyle('url')
 .setEmoji('905887440378691594')
-.setURL('');
+.setURL('https://discord.gg/JCtqn4A2Y2');
 
 const website = new disbut.MessageButton()
-.setLabel('Website SOON')
+.setLabel('Website')
 .setStyle('url')
 .setEmoji('905888428594429973')
-.setURL('');
+.setURL('https://security-bot1-1.junger.repl.co/');
 
 
 const trash = new disbut.MessageButton()
@@ -183,8 +183,7 @@ const trash = new disbut.MessageButton()
 .setStyle('red')
  message.react("<a:797855362694774804:891459284183941170>");
 
-    
-    const me = await message.channel.send(help,[ website, support, invite, vote , trash]})
+const me = await message.channel.send(help,{buttons : [ website, support, invite, vote , trash]})
 
  const filter = async(btn) => btn.clicker.user.id == message.member.id
                 const collector = me.createButtonCollector(filter)
@@ -201,6 +200,7 @@ const trash = new disbut.MessageButton()
   } 
 }); 
 //
+//////
   
 
 

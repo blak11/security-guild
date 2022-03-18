@@ -16,6 +16,25 @@ const math = require("math-expression-evaluator");
 const { get } = require("snekfetch");
 const guild = require("guild");
 
+
+client.on("message", async (message) => {
+  if (message.author.bot) return;
+  if (message.channel.type === "dm") return;
+
+  let args = message.content.slice(prefix.length).trim().split(" ");
+  let cmd = args.shift().toLowerCase();
+  if (!message.content.startsWith(prefix)) return;
+
+  try {
+    let commandFile = require(`./commands/${cmd}.js`);
+    commandFile.run(client, message, args);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+
+
 const dateFormat = require("dateformat");
 var table = require("table").table;
 const Discord = require("discord.js");
@@ -142,7 +161,7 @@ client.on("message", async message => {
  \`anti webhook [on / off]\`
 
 **Public Command**
-\`bot\`, \`server\`, \`ping\`, \`user\`, \`roles\`
+\`bot\`, \`server\`, \`ping\`, \`user\`, \`stats\`
 
 **Moderation Command**
 \`ban\`, \`kick\`, \`mute\`, \`unmute\`, \`bans\`, \`say\`, \`unban[userid/all]\`
@@ -182,15 +201,15 @@ const website = new disbut.MessageButton()
 */
     
     
-    
+ /*   
 const trash = new disbut.MessageButton()
 .setLabel('Delete')
 .setID('delete')
 .setEmoji('🚫')
 .setStyle('red')
  message.react("<a:797855362694774804:891459284183941170>");
-
-const me = await message.channel.send(help,{buttons : [  support, invite, vote , trash]})
+*/
+const me = await message.channel.send(help,{buttons : [  support, invite, vote ]})
 
  const filter = async(btn) => btn.clicker.user.id == message.member.id
                 const collector = me.createButtonCollector(filter)

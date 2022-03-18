@@ -1462,3 +1462,179 @@ client.on("guildCreate", guild => {
 
 
 /////OIN SERVER Work
+
+const { channelCheck, kickCheck, emojiDeleteCheck, roleCheck, banCheck, channelCreate, emojiCreateCheck, channelUpdateCheck }  = require('./Functions')
+const Enmap = require('enmap')
+
+client.antinuke = new Enmap({name:"antinuke", ensureProps:true})
+client.antiraid = new Enmap({name:"antiraid", ensureProps:true})
+client.commands = new Discord.Collection()
+
+
+client.on('emojiDelete', (emoji) => {
+
+
+  client.antinuke.math(emoji.guild.id, "+", 1, "emojis")
+
+    
+
+  if(client.antinuke.get(emoji.guild.id, "emojis") >= 4) return;
+  emojiDeleteCheck(client, 3, emoji.guild)
+
+
+
+  setTimeout(() => {
+   client.antinuke.set(emoji.guild.id, 0, "emojis")
+}, 4000)
+
+})
+
+
+client.on('emojiCreate', (emoji) => {
+
+
+  client.antinuke.math(emoji.guild.id, "+", 1, "emojiCreate")
+
+    
+
+
+  if(client.antinuke.get(emoji.guild.id, "emojiCreate") >= 11) return;
+  emojiCreateCheck(client, 10, emoji.guild)
+
+
+
+  setTimeout(() => {
+   client.antinuke.set(emoji.guild.id, 0, "emojiCreate")
+}, 4000)
+
+
+})
+
+client.on('guildMemberRemove', async (member) => {
+
+  let auditLogs = await member.guild.fetchAuditLogs()
+  let actualLogs = auditLogs.entries.first()
+  if(actualLogs.action === "MEMBER_KICK") {
+    client.antinuke.math(member.guild.id, "+", 1, "kicks")
+  }
+
+    
+
+
+  if(client.antinuke.get(member.guild.id, "kicks") >= 4) return;
+  kickCheck(client, 3, member.guild)
+
+
+
+  setTimeout(() => {
+   client.antinuke.set(member.guild.id, 0, "kicks")
+}, 4000)
+
+})
+
+client.on('channelDelete', (channel) => {
+  if(!channel.guild) return;
+  client.antinuke.math(channel.guild.id, "+", 1, "channels")
+
+    
+
+
+  if(client.antinuke.get(channel.guild.id, "channels") >= 4) return;
+  channelCheck(client, 3, channel.guild)
+
+
+
+  setTimeout(() => {
+   client.antinuke.set(channel.guild.id, 0, "channels")
+}, 4000)
+
+})
+
+
+client.on('channelCreate', (channel) => {
+  if(!channel.guild) return;
+  client.antinuke.math(channel.guild.id, "+", 1, "channelCreate")
+
+    
+
+
+  if(client.antinuke.get(channel.guild.id, "channelCreate") >= 4) return;
+  channelCreate(client, 3, channel.guild)
+
+
+
+  setTimeout(() => {
+   client.antinuke.set(channel.guild.id, 0, "channelCreate")
+}, 4000)
+
+})
+client.on('guildBanAdd', (guild, user) => {
+
+  client.antinuke.math(guild.id, "+", 1, "bans")
+  if(client.antinuke.get(guild.id, "bans") >= 4) return;
+  banCheck(client, 3, guild)
+
+  setTimeout(() => {
+    client.antinuke.set(guild.id, 0, "bans")
+  }, 4000)
+
+})
+
+client.on('channelUpdate', (oldchannel, newchannel) => {
+  if(!newchannel.guild) return;
+  client.antinuke.math(newchannel.guild.id, "+", 1, "channelUpdate")
+  if(client.antinuke.get(newchannel.guild.id, "channelUpdate") >= 4) return;
+  channelUpdateCheck(client, 3, newchannel.guild)
+
+  setTimeout(() => {
+    client.antinuke.set(newchannel.guild.id, 0, "channelUpdate")
+  }, 4000)
+})
+
+
+client.on('webhookUpdate', async (channel) => {
+ const webhooks = await (await channel.fetchWebhooks())
+ webhooks.forEach(w => {
+
+  if(!client.antinuke.get(channel.guild.id, "trusted").includes(w.owner.id)) {
+    if(client.users.get(w.owner.id)) {
+      client.users.get(w.owner.id).send('The webhook you have just created/edited has been deleted due to you not being among the trusted users.')
+      w.delete("Not authenticated.")
+    }
+  }
+
+ })
+})
+
+client.on('message', (msg) => {
+        
+  if(!msg.guild) return;
+  client.antinuke.ensure(msg.guild.id, {
+      restore: [{
+          channels: [],
+          roles: [],
+          made: "Not Made"
+      }],
+      bans: 0,
+      kicks: 0,
+      channels: 0,
+      channelCreate: 0,
+      channelUpdate: 0,
+      emojiCreate: 0,
+      roles: 0,
+      emojis: 0,
+      trusted: [],
+  })
+
+  client.antiraid.ensure(msg.guild.id, {
+    botsystem: false,
+  })
+
+  const args = msg.content.slice("/".length).trim().split(/ +/g);
+  const cmd = args.shift().toLowerCase();
+  if (!client.commands.get(cmd)) return;
+
+  client.commands.get(cmd).run(client, msg, args);
+
+  
+})

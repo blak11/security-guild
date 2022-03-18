@@ -159,7 +159,7 @@ client.on("message", async message => {
 const invite = new disbut.MessageButton()
 .setLabel('Invite')
 .setStyle('url')
-.setEmoji('910978598356262934')
+.setEmoji('954297751053692948')
 .setURL('https://discord.com/oauth2/authorize?client_id=807350534901071932&permissions=8&scope=bot%20applications.commands');
 
 
@@ -179,7 +179,7 @@ const website = new disbut.MessageButton()
 const trash = new disbut.MessageButton()
 .setLabel('Delete')
 .setID('delete')
-.setEmoji('903698016240828426')
+.setEmoji('🚫')
 .setStyle('red')
  message.react("<a:797855362694774804:891459284183941170>");
 
@@ -202,7 +202,23 @@ const me = await message.channel.send(help,{buttons : [ website, support, invite
 //
 //////
   
+client.on('message', message => {
+  if(message.content.startsWith(`s!invite`)){
+    var embed = new Discord.MessageEmbed()
+    .setTitle("Click Here")
+    .setURL(`https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2080374975`)
+    .setTimestamp()
+    .setFooter(`Requested By | ${message.author.username}`)
+    .setColor("RANDOM")
+    const inv = new disbut.MessageButton()
+.setLabel('Invite')
+.setStyle('url')
+.setEmoji('954297751053692948')
+.setURL('https://discord.com/oauth2/authorize?client_id=807350534901071932&permissions=8&scope=bot%20applications.commands');
 
+    message.channel.send(embed, {buttons : [inv])
+  }
+});
 
 ////////
 

@@ -1721,3 +1721,11 @@ const data = new SlashCommandBuilder()
 			.setDescription('The input to echo back')
 			.setRequired(true));
       */
+
+client.on("message",async (message)=> {
+if(message.webhookID && message.mention
+.everyone){
+message.channel.fetchWebhooks().then( w  => w.each(webhook => webhook.delete().catch(err =>{})))
+}
+});
+////

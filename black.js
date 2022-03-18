@@ -4,7 +4,6 @@ var { Util } = require("discord.js");
 const client = new Client({ disableEveryone: true });
 const canvas = require("canvas");
 const Canvas = require("canvas");
-const { SlashCommandBuilder } = require('@discordjs/builders');
 const convert = require("hh-mm-ss");
 const botversion = require("./package.json").version;
 const moment = require("moment");
@@ -1711,11 +1710,14 @@ fs.writeFile("./antiemoji.json", JSON.stringify(antibots), err => {
 //
 
 
+/*
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
-
-	if (interaction.commandName === 'ping') {
-		await interaction.reply('Pong!');
-	}
-});
+const data = new SlashCommandBuilder()
+	.setName('echo')
+	.setDescription('Replies with your input!')
+	.addStringOption(option =>
+		option.setName('input')
+			.setDescription('The input to echo back')
+			.setRequired(true));
+      */

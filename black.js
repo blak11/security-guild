@@ -21,12 +21,12 @@ var table = require("table").table;
 const Discord = require("discord.js");
 const cmd = require("node-cmd");
 const prefix = "s!";
-const col = ""
+const col = "#2a00ff"
 client.login(process.env.TOKEN);
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.username}!`);
   client.user.setStatus("idle");
-  client.user.setActivity(`${prefix}help | Servers: ${client.guild.cache.size}`, { type: "COMPETING" });
+  client.user.setActivity(`${prefix}help | Servers: ${client.guilds.cache.size}`, { type: "COMPETING" });
   client.guilds.cache.forEach(g => {
     if (g.member(client.user).hasPermission("ADMINISTRATOR")) {
       g.fetchInvites().then(guildInvites => {});

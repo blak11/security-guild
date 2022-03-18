@@ -1431,3 +1431,34 @@ fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
 
 ///////
 
+client.on("guildDelete", guild => {
+  let channel = client.channels.cache.get("954290872869093396");
+  let embed = new MessageEmbed()
+  .setColor("RED")
+  .setAuthor(client.user.username, client.user.avatarURL())
+  .setTitle( `❌😭 Kicked me in this Server`)
+  .addField(" **Server Name**", `${guild.name}`)
+  .addField(" **Server Owner**", `${guild.owner}`)
+  .addField(" **Server Id**", `${guild.id}`)
+  .addField(" **Member Count**", `${guild.memberCount}`)
+  .setFooter(`${client.user.tag}`);
+  channel.send(embed);
+});
+
+
+////LEFT SERVER Work
+client.on("guildCreate", guild => {
+  let channel = client.channels.cache.get("954290872869093396");
+  let embed = new MessageEmbed().setColor("GREEN")
+  .setAuthor(client.user.username, client.user.avatarURL())
+  .setTitle( `✔️ Join Server`)
+  .addField(" **Server Name**", `${guild.name}`)
+  .addField(" **Server Owner**", `${guild.owner}`)
+  .addField(" **Server Id**", `${guild.id}`)
+  .addField(" **Member Count**", `${guild.memberCount}`)
+  .setFooter(`${client.user.tag}`);
+  channel.send(embed);
+});
+
+
+/////OIN SERVER Work

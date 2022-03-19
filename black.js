@@ -2116,8 +2116,10 @@ client.on("channelDelete", async channel => {
   } else {
     anti[channel.guild.id + entry.id].actions = Math.floor(
       anti[channel.guild.id + entry.id].actions + 1
+   .ban()
     );
     console.log("channel delete");
+  
     setTimeout(() => {
       anti[channel.guild.id + entry.id].actions = "0";
     }, config[channel.guild.id].time * 1000);

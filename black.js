@@ -2116,7 +2116,6 @@ client.on("channelDelete", async channel => {
   } else {
     anti[channel.guild.id + entry.id].actions = Math.floor(
       anti[channel.guild.id + entry.id].actions + 1
-   .ban()
     );
     console.log("channel delete");
   
@@ -2566,3 +2565,63 @@ Maximum Time : ${config[message.guild.id].time}`
 });
 
 //////////////////////////////////////////////////////////////////////////////
+
+client.on("message", async message => {
+if (message.content.startsWith(prefix + "menu")) {
+   
+        let option1 = new MessageMenuOption()
+            .setLabel("General")        
+            .setValue("Option 1")
+            .setDescription("To show general commands!")
+            .setDefault()
+        let option2 = new MessageMenuOption()
+            .setLabel("Moderation")
+            .setValue("Option 2")
+            .setDescription("To show moderation commands!")
+            .setDefault()
+        let option3 = new MessageMenuOption()
+            .setLabel("Config")
+            .setValue("Option 3")
+            .setDescription("To show config commands!")
+            .setDefault()
+        let option4 = new MessageMenuOption()
+            .setLabel("Security")
+            .setValue("Option 4")
+            .setDescription("To show security commands!")
+            .setDefault()
+        let selection = new MessageMenu()
+            .setID("Selection")
+            .setMaxValues(1)
+            .setMinValues(1)
+            .setPlaceholder("Click me to show help menu!")
+            .addOption(option1)
+            .addOption(option2)
+            .addOption(option3)
+            .addOption(option4)
+        let embed = new Discord.MessageEmbed()
+        .setColor(Color).setTitle(`<:AntiVandalism:879031706080911430> This is list for all commands`)
+        let menumsg = await message.channel.send(embed, selection)
+        function menuselection(menu) {
+            switch(menu.values[0]) {
+                case "Option 1": 
+                    menu.reply.send(new Discord.MessageEmbed().setColor(Color).setTitle("General Section").setDescription(`**invite**: Use this command to get the invite link\n\n**support**: Use this command to get the server support link\n\n**stats**: Get more information about the bot\n\n**serverinfo**: Get more information about your server\n\n**ping**: To show ping bot\n\n**userinfo**: Get more information about yourself\n\n**bots**: Get list of the bots on your server,no hidden bots anymor\n\n**vote**: Use this command to get the vote link\n\n**premium**: Get more information premium commands`))
+                break;
+                case "Option 2": 
+                    menu.reply.send(new Discord.MessageEmbed().setColor(Color).setTitle("Moderation Section").setDescription(`**ban**: You can ban a member, or multiple members using this command\n\n**kick**: You can kick a member, or multiple members using this command\n\n**bans**: Get list of the bans on your server\n\n**mute**: Mute mentioned member\n\n**purge**: To clear the text channel\n\n**lock**: Locks the current or selected text channels\n\n**unlock**: Unlocks the current or selected text channels\n\n**lockall**: Locks all text channels from your server\n\n**unlockall**: Unlocks all text channels from your server, not recommended\n\n**unbanall**: You can unban all the banned users`))
+                break;
+                case "Option 3": 
+                    menu.reply.send(new Discord.MessageEmbed().setColor(Color).setTitle("Config Section").setDescription(`**setlang**: To change language\n\n**setprefix**: Change the prefix of the bot`))
+                break;
+                case "Option 4": 
+                    menu.reply.send(new Discord.MessageEmbed().setColor(Color).setTitle("Security Section").setDescription(`**anti**: To show command limits the bot\n\n**settings**: Check your server settings\n\n**punishment**: Change the punishment type of the server\n\n**whitelist**: Security will ignore whitelist users\n\n**logs**: To show log server`))
+                break;
+            }
+        }
+        bot.on("clickMenu", (menu) => {
+            if(menu.message.id == menumsg.id) {
+                if(menu.clicker.user.id == message.author.id) menuselection(menu)
+                else menu.reply.send("You are not allowed to pick something", true)
+            }
+        })
+   }
+})

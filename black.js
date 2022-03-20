@@ -912,6 +912,8 @@ client.on("message", message => {
 
 ///////
 
+/*
+
 client.on("message", message => {
   let command = message.content.split(" ")[0];
   if (command == prefix + "unban") {
@@ -943,7 +945,7 @@ client.on("message", message => {
       });
   }
 });
-
+*/
 ///////
 
 client.on("message", message => {
@@ -1058,7 +1060,7 @@ client.on("message", message => {
 
 
 //////////////mute
-
+/*
 client.on("message", async message => {
   let args = message.content.split(" ");
   let user =
@@ -1138,7 +1140,7 @@ client.on("message", async message => {
 
 //////////
 
-
+*/
 ////////
 
 client.on("message", message => {
@@ -1160,26 +1162,7 @@ client.on("message", message => {
 });
 
 ////////avatar
-
-client.on("message", async message => {
-  let command = message.content.toLowerCase().split(" ")[0];
-  command = command.slice(prefix.length);
-  if (command == "avatar") {
-    let args = message.content.split(" ");
-    let user =
-      message.mentions.users.first() ||
-      message.author ||
-      message.guild.member.cache.get(args[1]);
-    message.channel.send(
-      new Discord.MessageEmbed()
-        .setAuthor(user.username, user.avatarURL())
-        .setDescription(`**[Avatar Link](${user.avatarURL()})**`)
-        .setImage(user.avatarURL({ dynamic: true, format: "png", size: 1024 }))
-    );
-  }
-});
-
-////////
+//////
 client.on('message', async message => {
     if(message.content.includes('@everyone','@here',)){ 
         if(message.member.hasPermission("MANAGE_GUILD")) return;

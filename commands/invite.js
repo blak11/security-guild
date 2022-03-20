@@ -4,7 +4,7 @@ const { MessageButton } = require("discord-buttons");
 
 module.exports = {
   name: "invite",
-  aliases: ["inv"],
+  aliases: ["inv","invi"],
   enabled: true,            
   memberPermissions: [ "SEND_MESSAGES" ],            
   botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],        

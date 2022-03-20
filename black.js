@@ -1,4 +1,3 @@
-
 const { Client, MessageEmbed } = require("discord.js");
 var { Util } = require("discord.js");
 const client = new Client({ disableEveryone: true });
@@ -17,6 +16,9 @@ const { get } = require("snekfetch");
 const guild = require("guild");
 
 
+
+/////
+
 client.on("message", async (message) => {
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
@@ -34,6 +36,7 @@ client.on("message", async (message) => {
 });
 
 
+/////
 
 const dateFormat = require("dateformat");
 var table = require("table").table;
@@ -137,7 +140,7 @@ const disbut = require('discord-buttons'); disbut(client)
 
 
 //////////
-/*
+
 client.on("message", async message => {
   if (message.content.startsWith(prefix + "help")) {
     let help = new Discord.MessageEmbed()
@@ -197,14 +200,14 @@ const support = new disbut.MessageButton()
 .setURL('https://discord.gg/AR7hKUAB5w');
 
     
-  /*  
+    
 const website = new disbut.MessageButton()
 .setLabel('Website')
 .setStyle('url')
 .setEmoji('905888428594429973')
 .setURL('https://security-bot1-1.junger.repl.co/');
 
-*/
+
     
     
  /*   
@@ -215,7 +218,7 @@ const trash = new disbut.MessageButton()
 .setStyle('red')
  message.react("<a:797855362694774804:891459284183941170>");
 */
-/*
+
 const me = await message.channel.send(help,{buttons : [  support, invite, vote ]})
 
 
@@ -233,7 +236,6 @@ const me = await message.channel.send(help,{buttons : [  support, invite, vote ]
 
   } 
 }); 
-*/
 //
 //////
   /*

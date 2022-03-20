@@ -20,7 +20,7 @@ module.exports = {
     .setColor(Color)
     .setAuthor("• Security Server is a Secured Bot that can protect your Server's Privacy and Safety + From getting Hacked. And it's Available for Free! You can get information about it here bot")
     .setImage(Image)
-    .setDescription(`\`You can get information about it here bot\``)
+    .setDescription(``)
     .addField("General Section", "`invite`, `support`, `vote`, `stats`, `serverinfo`, `userinfo`")
     .addField("Moderation Section", "`kick`, `ban`, `mute`, `unmute`, `clear`, `unbanall`, `lock`, `unlock`, `lockall`, `unlockall`, `nick`, `addrole`, `removerole`")
    //// .addField("")
@@ -41,7 +41,7 @@ module.exports = {
     
       let button3 = new MessageButton()
        .setStyle('url')
-       .setURL('https://discord.gg/mnS2XAznKU') 
+       .setURL('https://discord.gg/AR7hKUAB5w') 
        .setEmoji(`💢`)
        .setLabel('Support')
      

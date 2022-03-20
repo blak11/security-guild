@@ -46,9 +46,14 @@ const prefix = "s!";
 const col = "#2a00ff"
 client.login(process.env.TOKEN);
 client.on("ready", async () => {
+  await client.user.setStatus("idle");
+  await client.user.setActivity(`${prefix}help | ${client.guilds.cache.size} Servers!`, { type: "COMPETING" });
+ 
+  
+  
   console.log(`Logged in as ${client.user.username}!`);
-  client.user.setStatus("idle");
-  client.user.setActivity(`${prefix}help | Servers: ${client.guilds.cache.size}`, { type: "COMPETING" });
+  ///client.user.setStatus("idle");
+ /// client.user.setActivity(`${prefix}help | Servers: ${client.guilds.cache.size}`, { type: "COMPETING" });
   client.guilds.cache.forEach(g => {
     if (g.member(client.user).hasPermission("ADMINISTRATOR")) {
       g.fetchInvites().then(guildInvites => {});
@@ -2548,3 +2553,133 @@ Maximum Time : ${config[message.guild.id].time}`
 client.on("guildCreate", guild  => {
 guild.owner.send("**Thanks For Added me to your server!**")
 }) 
+
+
+//=============================== - [ addrole ] - ===================================//
+client.on('message',async message => {
+  if(message.content.startsWith(prefix + "addrole")) { 
+ 
+if (!message.member.hasPermission("MANAGE_GUILD")) {
+      return message.channel.send("you don't have this permission ```MANAGE_GUILD```");
+    }
+    if (!message.guild.me.hasPermission("MANAGE_GUILD")) {
+      return message.channel.send("i don't have this permission ```MANAGE_GUILD```");
+    } 
+    let qawrma = message.mentions.members.first();
+    if(!qawrma) return message.reply(`Mention Someone to Add Role!`)
+    let shla = message.mentions.roles.first();
+    if(!shla) return message.reply(`Mention A Role!`)
+ 
+      const embed = new Discord.MessageEmbed()
+ 
+      .setColor(col)
+      .setDescription(`Done changed role for ${qawrma.user.username} added ${shla}`)
+ 
+      await message.channel.send(embed)
+ 
+      qawrma.roles.add(shla)
+ 
+  }
+})
+
+//=============================== - [ RemoveRole ] - ===================================//
+client.on('message',async message => {
+  if(message.content.startsWith(prefix + "removerole")) { 
+ 
+if (!message.member.hasPermission("MANAGE_GUILD")) {
+      return message.channel.send("you don't have this permission ```MANAGE_GUILD```");
+    }
+    if (!message.guild.me.hasPermission("MANAGE_GUILD")) {
+      return message.channel.send("i don't have this permission ```MANAGE_GUILD```");
+    } 
+    let qawrma = message.mentions.members.first();
+    if(!qawrma) return message.reply(`Mention Someone to Remove Role!`)
+    let shla = message.mentions.roles.first();
+    if(!shla) return message.reply(`Mention A Role`)
+ 
+      const embed = new Discord.MessageEmbed()
+ 
+      .setColor(col)
+      .setDescription(`Done changed role for ${qawrma.user.username} removed ${shla}`)
+ 
+      await message.channel.send(embed)
+ 
+      qawrma.roles.remove(shla)
+ 
+  }
+})
+
+
+
+var meS = "**Dont Allow Send Everyone For You!**"
+var meS2 = "**Dont Allow Send Here For You!**"
+var meS3 = "**Dont Allow Send any Links For You!**"
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("@everyone")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply(meS);
+  }
+});
+/////////////
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("@here")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply(meS2);
+  }
+});
+//////////////
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("https://")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply(meS3);
+  }
+});
+
+
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("http://")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply(meS3);
+  }
+});
+
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("www.")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply(meS3);
+  }
+});
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("www")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply(meS3);
+  }
+});
+
+client.on("message", msg => {
+  if (msg.author.bot) return;
+  if (msg.content.includes("discord.gg/")) {
+    if (msg.member.hasPermission("MENTION_EVERYONE")) return;
+    if (!msg.channel.guild) return;
+    msg.delete();
+    msg.reply(meS3);
+  }
+});

@@ -17,7 +17,7 @@ module.exports = {
   const embed = new Discord.MessageEmbed()
       .setColor(Color)
       .setTitle("List of all commands security")
-      .setDescription(`Type: [on,off,<number>]\n\n🛡️ **anti channelD, anti channelC, anti roleD, anti roleC, anti ban, anti kick, anti bot [on/off]**`)
+      .setDescription(`Type: [on,off,<number>]\n\n🛡️ **antichannelD, antichannelC, antiroleD, antiroleC, antiban, antikick, antibot [on/off], antiwebhook [on/off], antiemoji [on/off]**`)
   message.channel.send(embed);
     }
 }

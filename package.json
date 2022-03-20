@@ -1,5 +1,4 @@
 {
-
   "name": "black",
   "version": "2.1.0",
   "description": "black",
@@ -21,7 +20,7 @@
     "util": "^0.12.3",
     "gif-search": "^2.0.1",
     "node-opus": "^0.3.3",
-    "ms": "^2.1.2",
+    "ms": "^2.1.3",
     "jimp": "^0.16.1",
     "math-expression-evaluator": "^1.2.22",
     "snekfetch": "^4.0.4",
@@ -31,7 +30,7 @@
     "get-youtube-id": "^1.0.1",
     "pretty-ms": "^7.0.0",
     "table": "^6.0.2",
-    "node-cmd": "^3.0.0",
+    "node-cmd": "^5.0.0",
     "enmap": "^5.7.3",
     "@suldashi/node-opus": "^0.3.5",
     "quick.db": "^7.1.2",
@@ -43,11 +42,14 @@
     "discord-slash-command-handler": "^3.1.7",
     "systeminformation": "^5.11.7",
     "moment-duration-format": "^2.3.2",
-    "beautify": "^0.0.8"
+    "beautify": "^0.0.8",
+    "discord-reply": "^0.1.0",
+    "discord-pro-antispam": "^1.0.0",
+    "discord-anti-spam": "^2.7.3",
+    "finalhandler": "^1.1.2",
+    "node-fetch": "^3.2.2"
   },
   "engines": {
     "node": "12.x"
   }
 }
-
-

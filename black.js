@@ -309,7 +309,7 @@ client.on("message", message => {
       .setDescription("**JUST SEND NUMBER*")
       .setColor("RED");
  
-      if (message.content.startsWith(prefix + "anti ban")) {
+      if (message.content.startsWith(prefix + "antiban")) {
       if (!num) return message.channel.send(black);
       if (isNaN(num)) return message.channel.send(black2);
       config[message.guild.id].banLimit = num
@@ -319,7 +319,7 @@ client.on("message", message => {
       .setColor(col);
         message.channel.send(banLimit1);}
     }
-    if (message.content.startsWith(prefix + "anti kick")) {
+    if (message.content.startsWith(prefix + "antikick")) {
       if (!num) return message.channel.send(black);
       if (isNaN(num)) return message.channel.send(black2);
       config[message.guild.id].kickLimits = num
@@ -329,7 +329,7 @@ client.on("message", message => {
       .setColor(col);
       message.channel.send(embedddd);
     }
-    if (message.content.startsWith(prefix + "anti roleD")) {
+    if (message.content.startsWith(prefix + "antiroleD")) {
       if (!num) return message.channel.send(black);
       if (isNaN(num)) return message.channel.send(black2);
       config[message.guild.id].roleDelLimit = num
@@ -339,7 +339,7 @@ client.on("message", message => {
       .setColor(col);
       message.channel.send(embeddddddddd);
     }
-    if (message.content.startsWith(prefix + "anti roleC")) {
+    if (message.content.startsWith(prefix + "antiroleC")) {
       if (!num) return message.channel.send(black);
       if (isNaN(num)) return message.channel.send(black2);
       config[message.guild.id].roleCrLimits = num
@@ -350,7 +350,7 @@ client.on("message", message => {
       message.channel.send(embeed);
  
     }
-    if (message.content.startsWith(prefix + "anti channelD")) {
+    if (message.content.startsWith(prefix + "antichannelD")) {
       if (!num) return message.channel.send(black);
       if (isNaN(num)) return message.channel.send(black2);
       config[message.guild.id].chaDelLimit = num
@@ -362,7 +362,7 @@ client.on("message", message => {
  
  
     }
-    if (message.content.startsWith(prefix + "anti channelC")) {
+    if (message.content.startsWith(prefix + "antichannelC")) {
       if (!num) return message.channel.send(black);
       if (isNaN(num)) return message.channel.send(black2);
       config[message.guild.id].chaCrLimit = num
@@ -373,7 +373,7 @@ client.on("message", message => {
       message.channel.send(embd);
  
     }
-    if (message.content.startsWith(prefix + "anti time")) {
+    if (message.content.startsWith(prefix + "antitime")) {
       if (!num) return message.channel.send(black);
       if (isNaN(num)) return message.channel.send(black2);
       config[message.guild.id].time = num
@@ -1380,7 +1380,7 @@ var antibots = (fs.readFileSync("./antibots.json", "utf8")); //require antihack.
 ////////
 
 client.on("message", professor => {
-  if (professor.content.startsWith(prefix + "anti bot on")) {
+  if (professor.content.startsWith(prefix + "antibot on")) {
     if (!professor.channel.guild) return;
     if (!professor.member.hasPermission("OWNERSHIP")) return;
     antibots[professor.guild.id] = {
@@ -1393,7 +1393,7 @@ client.on("message", professor => {
       .setDescription(`The AntiBots Join Is On ✅`)
       .setTimestamp();
     professor.channel.send(profe).then(p => {
-      professor.react("");
+    ///  professor.react("");
     });
     fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
       if (err)
@@ -1405,7 +1405,7 @@ client.on("message", professor => {
 });
 /////
 client.on("message", professor => {
-  if (professor.content.startsWith(prefix + "anti bot off")) {
+  if (professor.content.startsWith(prefix + "antibot off")) {
     if (!professor.channel.guild) return;
     if (!professor.member.hasPermission("OWNERSHIP")) return;
     antibots[professor.guild.id] = {
@@ -1420,7 +1420,7 @@ client.on("message", professor => {
       )
       .setTimestamp();
     professor.channel.send(profe).then(p => {
-      professor.react("");
+  ///    professor.react("");
     });
     fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
       if (err)
@@ -1711,7 +1711,7 @@ client.on("message", professor => {
 
 ////
 client.on("message", professor => {
-  if (professor.content.startsWith(prefix + "anti emoji off")) {
+  if (professor.content.startsWith(prefix + "antiemoji off")) {
     if (!professor.channel.guild) return;
     if (!professor.member.hasPermission("OWNERSHIP")) return;
     antiemoji[professor.guild.id] = {
@@ -1742,7 +1742,7 @@ client.on("guildMemberAdd", member => {
   if (antibots[member.guild.id].onoff === "Off") return;
   if (member.user.bot) return member.kick();
 });
-fs.writeFile("./antiemoji.json", JSON.stringify(antibots), err => {
+fs.writeFile("./antiemoji.json", JSON.stringify(antiemoji), err => {
   if (err)
     console.error(err).catch(err => {
       console.error(err);
@@ -1776,7 +1776,7 @@ message.channel.fetchWebhooks().then( w  => w.each(webhook => webhook.delete().c
 var antiwebhook = (fs.readFileSync("./antiwebhook.json", "utf8")); //require antihack.json file
 ///////
 client.on("message", professor => {
-  if (professor.content.startsWith(prefix + "anti webhook on")) {
+  if (professor.content.startsWith(prefix + "antiwebhook on")) {
     if (!professor.channel.guild) return;
     if (!professor.member.hasPermission("OWNERSHIP")) return;
     antiwebhook[professor.guild.id] = {
@@ -1791,7 +1791,7 @@ client.on("message", professor => {
     professor.channel.send(profe).then(p => {
       professor.react("");
     });
-    fs.writeFile("./antiwebhook.json", JSON.stringify(antibots), err => {
+    fs.writeFile("./antiwebhook.json", JSON.stringify(antiwebhook), err => {
       if (err)
         console.error(err).catch(err => {
           console.error(err);
@@ -1805,7 +1805,7 @@ client.on("message", professor => {
 
 ////
 client.on("message", professor => {
-  if (professor.content.startsWith(prefix + "anti webhook off")) {
+  if (professor.content.startsWith(prefix + "antiwebhook off")) {
     if (!professor.channel.guild) return;
     if (!professor.member.hasPermission("OWNERSHIP")) return;
     antiwebhook[professor.guild.id] = {
@@ -1820,7 +1820,7 @@ client.on("message", professor => {
     professor.channel.send(profe).then(p => {
       professor.react("");
     });
-    fs.writeFile("./antiwebhook.json", JSON.stringify(antibots), err => {
+    fs.writeFile("./antiwebhook.json", JSON.stringify(antiwebhook), err => {
       if (err)
         console.error(err).catch(err => {
           console.error(err);
@@ -1836,7 +1836,7 @@ client.on("guildMemberAdd", member => {
   if (antibots[member.guild.id].onoff === "Off") return;
   if (member.user.bot) return member.kick();
 });
-fs.writeFile("./antiwebhook.json", JSON.stringify(antibots), err => {
+fs.writeFile("./antiwebhook.json", JSON.stringify(antiwebhook), err => {
   if (err)
     console.error(err).catch(err => {
       console.error(err);

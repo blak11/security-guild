@@ -170,7 +170,7 @@ client.on("message", async message => {
  \`settings\`
 
 **Public Command**
-\`bot\`, \`server\`, \`ping\`, \`user\`, \`stats\`
+\`bot\`, \`server\`, \`ping\`, \`user\`, \`stats\`, \`vote\`
 
 **Moderation Command**
 \`ban\`, \`kick\`, \`mute\`, \`unmute\`, \`bans\`, \`say\`, \`unban[userid/all]\`
@@ -200,7 +200,7 @@ const support = new disbut.MessageButton()
 .setURL('https://discord.gg/AR7hKUAB5w');
 
     
-    
+    /*
 const website = new disbut.MessageButton()
 .setLabel('Website')
 .setStyle('url')
@@ -236,6 +236,7 @@ const me = await message.channel.send(help,{buttons : [  support, invite, vote ]
 
   } 
 }); 
+
 //
 //////
   /*

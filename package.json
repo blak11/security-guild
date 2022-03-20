@@ -1,4 +1,5 @@
 {
+
   "name": "black",
   "version": "2.1.0",
   "description": "black",
@@ -24,7 +25,7 @@
     "jimp": "^0.16.1",
     "math-expression-evaluator": "^1.2.22",
     "snekfetch": "^4.0.4",
-    "guild": "^1.2.2",
+    "guild": "^1.2.3",
     "dateformat": "^3.0.3",
     "hastebin-gen": "^2.0.5",
     "get-youtube-id": "^1.0.1",
@@ -48,3 +49,5 @@
     "node": "12.x"
   }
 }
+
+

@@ -14,7 +14,7 @@ dependencies:
   fs: 0.0.2
   get-youtube-id: 1.0.1
   gif-search: 2.1.0
-  guild: 1.2.2
+  guild: 1.2.3
   hastebin-gen: 2.0.5
   hh-mm-ss: 1.2.0
   http: 0.0.0
@@ -1626,10 +1626,11 @@ packages:
     dev: false
     resolution:
       integrity: sha512-wv/LAoHdRE3BeTGz53FAamhGlPLhlssK45usmGFThIi4XqnBmjKQ16u+RNbP7WvigRZDxUsM0J3gcQ5yicaL0w==
-  /guild/1.2.2:
+  /guild/1.2.3:
+    deprecated: No longer maintained
     dev: false
     resolution:
-      integrity: sha1-krd+ZI74gGhl/1av9MWPepnSNsU=
+      integrity: sha512-3vV0N5SUXVCn+p86wH7sGmTShDHguM8aYg6yjgvPAgsqCCWB+M2jQO9VvJMH4LBTOp68lZkTtt/SUsTgzPJ1EQ==
   /har-schema/1.0.5:
     dev: false
     engines:
@@ -3581,7 +3582,7 @@ specifiers:
   fs: ^0.0.2
   get-youtube-id: ^1.0.1
   gif-search: ^2.0.1
-  guild: ^1.2.2
+  guild: ^1.2.3
   hastebin-gen: ^2.0.5
   hh-mm-ss: ^1.2.0
   http: ^0.0.0

@@ -1397,7 +1397,7 @@ client.on("message", message => {
 
 var antibots = (fs.readFileSync("./antibots.json", "utf8")); //require antihack.json file
 ////////
-/*
+
 client.on("message", professor => {
   if (professor.content.startsWith(prefix + "anti bot on")) {
     if (!professor.channel.guild) return;
@@ -1465,7 +1465,7 @@ fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
     });
 });
 
-*/
+
 ///////
 
 client.on("guildDelete", guild => {
@@ -1884,6 +1884,7 @@ const calliwarn = "";
 //////////////////////////////////////////////////////////////////////////////
 let anti = JSON.parse(fs.readFileSync("./antigreff.json", "UTF8"));
 let config = JSON.parse(fs.readFileSync("./configg.json", "UTF8"));
+/*
 client.on("message", message => {
   if (!message.channel.guild) return;
   let user = anti[message.guild.id + message.author.id];
@@ -2523,6 +2524,7 @@ fs.writeFile("./antibots.json", JSON.stringify(antibots), err => {
       console.error(err);
     });
 });
+*/
 //////////////////////////////////////////////////////////////////////////////
 client.on("message", message => {
   if (message.content === prefix + "settings") {

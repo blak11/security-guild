@@ -140,7 +140,7 @@ const disbut = require('discord-buttons'); disbut(client)
 
 
 //////////
-
+/*
 client.on("message", async message => {
   if (message.content.startsWith(prefix + "help")) {
     let help = new Discord.MessageEmbed()
@@ -218,7 +218,7 @@ const trash = new disbut.MessageButton()
 .setStyle('red')
  message.react("<a:797855362694774804:891459284183941170>");
 */
-
+/*
 const me = await message.channel.send(help,{buttons : [  support, invite, vote ]})
 
 
@@ -236,7 +236,7 @@ const me = await message.channel.send(help,{buttons : [  support, invite, vote ]
 
   } 
 }); 
-
+*/
 //
 //////
   /*
@@ -1303,7 +1303,7 @@ client.on("message", message => {
 });
 
 ////////
-
+/*
 client.on("message", async message => {
   if (
     message.author.bot ||
@@ -1367,20 +1367,8 @@ client.on("message", async message => {
 });
 
 ///////
-
-client.on("message", message => {
-  if (message.content.startsWith(prefix + "support")) {
-    const embed = new Discord.MessageEmbed()
-      .setDescription(`[Support]()`)
-      .setTimestamp()
-      .setFooter(`By: ${message.author.tag}`)
-      .setAuthor(client.user.username)
-      .setThumbnail(message.author.avatarURL)
-      .setColor(col);
-    message.author.send(embed);
-    message.react("");
-  }
-});
+*/
+/////
 
 
 var antibots = (fs.readFileSync("./antibots.json", "utf8")); //require antihack.json file
@@ -2556,3 +2544,7 @@ Maximum Time : ${config[message.guild.id].time}`
 
 //////////////////////////////////////////////////////////////////////////////
 /////
+
+client.on("guildCreate", guild  => {
+guild.owner.send("**Thanks For Added me to your server!**")
+}) 

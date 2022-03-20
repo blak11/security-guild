@@ -133,8 +133,7 @@ else last = `  Never Join Any Room`;
 
 
 
-const { disbut, MessageMenuOption, MessageMenu } = require('discord-buttons');
-///disbut(client)
+const disbut = require('discord-buttons'); disbut(client)
 
 
 //////////
@@ -236,7 +235,7 @@ const me = await message.channel.send(help,{buttons : [  support, invite, vote ]
 
 //
 //////
-  
+  /*
 client.on('message', message => {
   if(message.content.startsWith(`s!invite`)){
     var embed = new Discord.MessageEmbed()
@@ -255,10 +254,10 @@ client.on('message', message => {
     message.channel.send(embed, {buttons :[inv]})
   }
 });
-
+*/
 ////////
 
-/*
+
 let anti = JSON.parse(fs.readFileSync("./antigrefff.json", "UTF8"));
 let config = JSON.parse(fs.readFileSync("./server.json", "UTF8"));
 client.on("message", message => {
@@ -523,6 +522,7 @@ client.on("channelCreate", async channel => {
     });
   }
 });
+////
 client.on("roleDelete", async channel => {
   const entry1 = await channel.guild
     .fetchAuditLogs({
@@ -566,6 +566,7 @@ client.on("roleDelete", async channel => {
         .catch(e =>
           channel.guild.owner.send(
             `**${entry.username} Has delet roles**`
+            
           )
         );
       anti[channel.guild.id + entry.id].actions = "0";
@@ -589,7 +590,7 @@ client.on("roleDelete", async channel => {
     if (e) throw e;
   });
 });
- 
+ //////
 client.on("roleCreate", async channel => {
   const entry1 = await channel.guild
     .fetchAuditLogs({
@@ -656,7 +657,7 @@ client.on("roleCreate", async channel => {
     if (e) throw e;
   });
 });
- 
+ /////
 client.on("guildBanAdd", async (guild, user) => {
   const entry1 = await guild
     .fetchAuditLogs({
@@ -861,7 +862,7 @@ client.on("guildMemberRemove", async member => {
 
 
 
-*/
+
 
   
       
@@ -1882,8 +1883,8 @@ const calliwarn = "";
 
 
 //////////////////////////////////////////////////////////////////////////////
-let anti = JSON.parse(fs.readFileSync("./antigreff.json", "UTF8"));
-let config = JSON.parse(fs.readFileSync("./configg.json", "UTF8"));
+////let anti = JSON.parse(fs.readFileSync("./antigreff.json", "UTF8"));
+////let config = JSON.parse(fs.readFileSync("./configg.json", "UTF8"));
 /*
 client.on("message", message => {
   if (!message.channel.guild) return;

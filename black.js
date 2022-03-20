@@ -137,7 +137,7 @@ const disbut = require('discord-buttons'); disbut(client)
 
 
 //////////
-
+/*
 client.on("message", async message => {
   if (message.content.startsWith(prefix + "help")) {
     let help = new Discord.MessageEmbed()
@@ -215,6 +215,7 @@ const trash = new disbut.MessageButton()
 .setStyle('red')
  message.react("<a:797855362694774804:891459284183941170>");
 */
+/*
 const me = await message.channel.send(help,{buttons : [  support, invite, vote ]})
 
 
@@ -232,7 +233,7 @@ const me = await message.channel.send(help,{buttons : [  support, invite, vote ]
 
   } 
 }); 
-
+*/
 //
 //////
   /*
